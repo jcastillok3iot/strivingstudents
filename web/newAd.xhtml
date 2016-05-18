@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <h:outputScript name="jquery/jquery.js" library="primefaces" target="head"/>
+        
+        <h3 class="hardblue TexAlCenter">Publish new advertisement</h3>
+        <span class="TexAlCenter DispBlock Wid100">Use this page to start from scratch and place your custom content.</span>
+    <div class="Container100 BorBotLeaden">
+        <div class="ContainerIndent">
+            <h:form enctype="multipart/form-data"> 
+            <p:panel style="min-height:400px;" id="adPanel">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                <p:panelGrid columns="1">
+                    <p:outputLabel value="Title"></p:outputLabel>
+                    <p:inputText  value="#{strivingBean.anAddDto.title}"></p:inputText>
+                    <p:outputLabel value="Category"></p:outputLabel>
+                    <h:panelGrid columns="4" cellpadding="10">
+                        <p:selectOneMenu id="catList" label="Category" filter="true"  panelStyle="width:350px" value="#{strivingBean.anAddDto.categoryId}">
+                            <f:selectItems value="#{strivingBean.mainCategories}" var="aCat" itemLabel="#{aCat.name}" itemValue="#{aCat.idCategory}"></f:selectItems>
+                            <p:ajax  listener="#{strivingBean.findSpecificCategoryForDisplay()}" update="adPanel" />
+                        </p:selectOneMenu>
+                        <p:selectOneMenu id="specCatList" filter="true"  panelStyle="width:350px" value="#{strivingBean.anAddDto.subCategoryId}" rendered="#{strivingBean.anAddDto.displaySpecCategories}">
+                            <f:selectItems value="#{strivingBean.anAddDto.selectedCategories}" var="aCat" itemLabel="#{aCat.name}" itemValue="#{aCat.idCategory}"></f:selectItems>                            
+                        </p:selectOneMenu>
+                     </h:panelGrid>
+                    <p:outputLabel value="Location"></p:outputLabel>
+                    <p:selectOneMenu id="locList" label="Location" filter="true"  panelStyle="width:350px" value="#{strivingBean.anAddDto.locationId}">
+                        <f:selectItems value="#{strivingBean.allLocations}" var="aLocation" itemLabel="#{aLocation.name}" itemValue="#{aLocation.idLocation}"></f:selectItems>
+                    </p:selectOneMenu>   
+                    <p:outputLabel value="Description"></p:outputLabel>
+                    <p:editor id="descEditor" value="#{strivingBean.anAddDto.description}"></p:editor>
+                    <p:outputLabel value="Image"></p:outputLabel>
+                    <p:fileUpload value="#{strivingBean.anAddDto.file}" mode="simple" />
+                    <p:outputLabel value="Phone"></p:outputLabel>
+                    <p:inputText  value="#{strivingBean.anAddDto.phone}"></p:inputText>
+                    <p:outputLabel value="Address"></p:outputLabel>
+                    <p:inputText  value="#{strivingBean.anAddDto.address}"></p:inputText>
+                    <p:outputLabel value="Price"></p:outputLabel>
+                    <p:inputText  value="#{strivingBean.anAddDto.price}"></p:inputText>                                       
+                    <p:commandButton id="addButton" value="Publish new" actionListener="#{strivingBean.saveNewAd()}" ajax = "false" ></p:commandButton> 
+                </p:panelGrid>
+            </p:panel>
+            </h:form>     
+        </div>
+    </div>
+    </ui:define>
+
+</ui:composition>

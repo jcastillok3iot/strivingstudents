@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Striving Students</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        
+    <h:outputScript name="js/login.js" library="sentinel-layout" />
+    <h:outputStylesheet name="css/font-icon-layout.css" library="sentinel-layout" />
+    <h:outputStylesheet name="css/sentinel-layout.css" library="sentinel-layout" />
+    <h:outputStylesheet name="css/core-layout.css" library="sentinel-layout" />
+</h:head>
+
+<h:body class="fontRegular login-back white-back">
+    
+    <div class="Container">
+        <div class="Container80 MaxWid500  Fnone MarAuto20 TexAlCenter">
+        <!-- <div class="Container80 MaxWid500  Fnone MarAuto TexAlCenter PaddingTopPercent10">
+           <a href="" id="login-logo">
+                <h:graphicImage name="images/sstextlarge.png" styleClass="Fleft" library="sentinel-layout"/>
+                <span class="Fs30 FontTitilliumSemiBoldItalic Fleft"><span class="softblue"></span><span class="hardblue"></span></span>
+            </a>
+            <div class="EmptyBox10"></div>
+           -->
+        </div>
+
+        <!-- LOGIN BOX COVER START -->
+        <h:form id="loginForm">
+        <div class="Container80 MaxWid500 white-back Fnone MarAuto BordRad10" id="login-box">
+            <div class="Container">
+                <div class="Container50 TexAlCenter Animated05 BoxSizeBorder TabBtn left TabBtnActiveLeft" role="1">
+                    <div class="Container80 Fnone MarAuto FontBold"><i class="icon-lock"></i> Login</div>
+                </div>
+                <div class="Container50 TexAlCenter Animated05 BoxSizeBorder TabBtn right" role="2">
+                    <div class="Container80 Fnone MarAuto FontBold"><i class="icon-key-1"></i> Register</div>
+                </div>
+
+                <div class="Container90 Fnone MarAuto TexAlCenter TabContent OvHidden" id="TAB1">
+                    <div class="EmptyBox50"></div>
+                    <p:inputText value="#{loginBean.loginDto.userId}" placeholder="Username" styleClass="Container80 Fnone MarAuto Fs18"/>
+                    <div class="EmptyBox10"></div>
+                    <p:password value="#{loginBean.loginDto.pswd}" placeholder="Password" styleClass="Container80 Fnone MarAuto Fs18" feedback="false"/>
+                    <div class="EmptyBox20"></div>                   
+                    <div class="EmptyBox30"></div>                    
+                    <p:commandButton action="#{loginBean.actionLogin()}" value="Log In action" styleClass="Fs16"  ></p:commandButton> 
+                    <div class="EmptyBox50"></div>
+                </div>
+
+                <div class="Container90 Fnone MarAuto DispNone TexAlCenter TabContent OvHidden" id="TAB2">
+                    <div class="EmptyBox30"></div>
+                    <p:inputText value="#{loginBean.loginDto.regName}" placeholder="First Name | Last Name" styleClass="Container80 Fnone MarAuto Fs18"/>
+                    <div class="EmptyBox30"></div>
+                    <p:inputText value="#{loginBean.loginDto.regEmail}" placeholder="Email Address" styleClass="Container80 Fnone MarAuto Fs18"/>
+                    <div class="EmptyBox30"></div>
+                    <p:inputText value="#{loginBean.loginDto.regEmail}" placeholder="DOB " styleClass="Container80 Fnone MarAuto Fs18"/>
+                    <div class="EmptyBox30"></div>                     
+                     <p:selectOneRadio id="genderOption" value="#{loginBean.loginDto.genderId}" >
+                        <f:selectItem itemLabel="Female" itemValue="1" />
+                        <f:selectItem itemLabel="Transgender" itemValue="2" />                     
+                        <f:selectItem itemLabel="Male" itemValue="3" />
+                        <f:selectItem itemLabel="Prefer not to disclose" itemValue="4" />
+                    </p:selectOneRadio>
+                    <div class="EmptyBox30"></div>
+                    <p:selectOneRadio id="schoolRoleOption" value="#{loginBean.loginDto.schoolRoleId}" >
+                        <f:selectItem itemLabel="Student" itemValue="1" />
+                        <f:selectItem itemLabel="Professor" itemValue="2" />                                             
+                    </p:selectOneRadio>                                     
+                    <div class="EmptyBox30"></div>
+                    <p:selectOneRadio id="schoolGradeOption" value="#{loginBean.loginDto.schoolGradeId}" >
+                        <f:selectItem itemLabel="Grad" itemValue="1" />
+                        <f:selectItem itemLabel="Undergrad" itemValue="2" />      
+                        <f:selectItem itemLabel="PhD Student" itemValue="2" />  
+                    </p:selectOneRadio>
+                    <div class="EmptyBox30"></div>
+                    <p:inputText value="#{loginBean.loginDto.regEmail}" placeholder="Major" styleClass="Container80 Fnone MarAuto Fs18"/>                    
+                    <div class="EmptyBox30"></div>
+                    <p:inputText value="#{loginBean.loginDto.regEmail}" placeholder="University" styleClass="Container80 Fnone MarAuto Fs18"/>                    
+                    <div class="EmptyBox30"></div>                    
+                    <p:inputText value="#{loginBean.loginDto.regPassword}" placeholder="New password" styleClass="Container80 Fnone MarAuto Fs18"/>
+                    <div class="EmptyBox30"></div>
+                    <p:inputText value="#{loginBean.loginDto.regPasswordTwice}" placeholder="Repeat password" styleClass="Container80 Fnone MarAuto Fs18"/>
+                    <div class="EmptyBox20"></div>
+                    <p:commandButton  value="Register" styleClass="Fs16" actionListener="#{loginBean.registerUserAction()}"></p:commandButton>
+                    <div class="EmptyBox30"></div>
+                     <p:commandButton  value="Next" styleClass="Fs16" actionListener="#{loginBean.registerUserAction()}"></p:commandButton>
+                </div>
+            </div>
+        </div>
+        </h:form>   
+    </div>
+    
+    <!-- LOGIN BOX COVER END -->
+    
+</h:body>
+
+</html>

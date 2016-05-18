@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="scripts">
+        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"/>
+    </ui:define>
+    
+    <ui:define name="content">
+        <h:outputScript name="jquery/jquery.js" library="primefaces" target="head"/>
+        
+        <h3 class="hardblue TexAlCenter">Detail ad Page</h3>
+       
+           <p:commandButton value="Print" type="button" icon="ui-icon-print" style="display:block;margin-bottom: 20px">
+                 <p:printer target="adPanel" />
+            </p:commandButton> 
+            <div class="Container100 BorBotLeaden">
+            <div class="ContainerIndent">
+                <div class="EmptyBox10"></div>
+
+                <div class="Container50 Responsive50">
+                    <div class="ContainerIndent">
+                        <p:panel style="min-height:400px;" id="adPanel">
+                            <div class="Container100 Responsive Fs20">
+                                <i class="icon-chart-bar"></i> #{strivingBean.selectedCategory.name}
+                            </div>
+                            <div class="Container100">
+                                <p:dataList id="adsList" value="#{strivingBean.selectedCategory.ocAdsCollection}" var="anAd">
+                                    #{anAd.seotitle},#{anAd.description}                                    
+                                </p:dataList>                               
+                            </div>
+                            <div class="Container100">
+                                <p:gmap center="29.586919, -98.666596" zoom="15" type="roadmap"  style="width:500px;height:300px"  />
+                            </div>
+                        </p:panel>
+                    </div>
+                </div>
+            </div>
+           </div>         
+    </ui:define>     
+</ui:composition>

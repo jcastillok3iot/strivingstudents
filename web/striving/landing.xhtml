@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    <h:head>
+        <title>Striving Students</title>
+    </h:head>
+    <ui:define name="head">
+        <script type="text/javascript">
+            function skinChart() {
+                this.cfg.shadow = false;
+                this.cfg.seriesColors = ['#dae8ef', '#27aae1'];
+                this.cfg.grid = {
+                    background: '#f3f5f7',
+                    borderColor: '#e5ebf0',
+                    gridLineColor: '#e5ebf0',
+                    shadow: false
+                };
+                this.cfg.axesDefaults = {
+                    rendererOptions: {
+                        textColor: '#9fadb5'
+                    }
+                };
+                this.cfg.seriesDefaults = {
+                    shadow: false,
+                    markerOptions: {
+                        shadow: false
+                    }
+                }
+            }
+
+            function skinPie() {
+                this.cfg.seriesColors = ['#dae8ef', '#27aae1', '#33ccff', '#9fadb5'];
+                this.cfg.grid = {
+                    background: '#ffffff',
+                    borderColor: '#eaeaea',
+                    gridLineColor: '#e5ebf0',
+                    shadow: false,
+                    borderWidth: 0
+                };
+                this.cfg.seriesDefaults.shadow = false;
+            }
+        </script>
+        <style type="text/css">
+            .jqplot-target, .jqplot-axis {
+                color: #9fadb5;
+            }
+        </style>
+    </ui:define>
+    
+      <ui:define name="content">
+       <h:form id="form">
+        <div class="Container100">
+            <div class="ContainerIndent">
+                <div class="EmptyBox20"></div>
+            </div>
+        </div>
+        <div class="Container25 Responsive">
+        <div class="ContainerIndent">
+            <p:panel style="min-height: 300px;">
+                <i class="icon-rocket Fs50 Fleft Wid25 red TexAlCenter"></i>
+                <div class="Fs24 Fright MarTop10 leaden Wid70">Sales Report</div>
+                <div class="Fs18 Fright leaden Wid70">Totally <span class="red">$ 132.875,45</span></div>
+                <div class="EmptyBox10"></div>
+                <p:separator styleClass="Wid100"></p:separator>
+                <div class="EmptyBox10"></div>
+                <div class="Fs12 Fright leaden Wid50 TexAlCenter Responsive">4th Quarter<br/><span class="Fs20 orange">--</span></div>
+                <div class="Fs12 Fright leaden Wid50 TexAlCenter Responsive">3rd Quarter<br/><span class="Fs20 orange">$13.760</span></div>
+                <div class="Fs12 Fright leaden Wid50 TexAlCenter Responsive">2nd Quarter<br/><span class="Fs20 red">$23.567</span></div>
+                <div class="Fs12 Fright leaden Wid50 TexAlCenter Responsive">1st Quarter<br/><span class="Fs20 hardblue">$2.370</span></div>
+                <div class="EmptyBox10"></div>
+                <p:separator styleClass="Wid100"></p:separator>
+                <a href="#" class="DispInlBlock Fs14 Fright MarRight10"><i class="icon-doc-1 orange"> Get Full Report</i></a>
+            </p:panel>
+        </div>
+       </div>  
+       </h:form>  
+      </ui:define>    
+          
+    
+   
+</ui:composition>
+

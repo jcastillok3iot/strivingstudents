@@ -1,0 +1,94 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="content">
+        <h:outputScript name="jquery/jquery.js" library="primefaces" target="head"/>
+        
+        <h3 class="hardblue TexAlCenter">Striving Students</h3>
+       <div class="EmptyBox20"></div>
+        <div class="Container25 Responsive">
+                    <div class="ContainerIndent">
+                        <p:panel style="min-height: 100px;">
+                            
+                            <h:graphicImage name="images/baylor.jpg" styleClass="Fleft" library="sentinel-layout" height="50px" width="50px"></h:graphicImage>
+                            <div class="Fs24 Fright MarTop10 leaden Wid70"><span class="hardblue">Jorge </span>, Welcome</div>
+                            <div class="Fs12 Fright leaden Wid70">Some<span class="red">basic</span> info <span class="red"> goes here</span> !</div>
+                            <div class="EmptyBox10"></div>
+                        </p:panel>
+                    </div>
+        </div>
+       
+       <div class="layout-menubarinner-box" id="searchMainArea" >
+            
+            <i class="icon-search floatLeft gray"></i>
+            <input type="text" class="layout-menubar-search floatLeft Animated05" placeholder="Search Here" value="#{strivingBean.dashboardDto.searchBy}"/>
+        </div>
+             
+    
+          <div class="Container100 leaden-back BorBotLeaden  Responsive100">
+           <div class="Container70 Responsive100">
+                <div class="EmptyBox10"></div>
+
+                <ui:repeat var="aKey" value="#{strivingBean.keyCategories}">
+                    <div class="Container25 Responsive100">
+                       <div class="ContainerIndent">
+                         <p:panel style="min-height: 300px;">
+                             <h:form>
+                                 <p:dataList id="categoryList" value="#{strivingBean.categoryItemsByDescription(aKey)}" var="aCategory">
+                                   <f:facet name="header">  
+                                        #{aKey}                                 
+                                   </f:facet> 
+                                   <p:commandLink actionListener="#{strivingBean.categoryAction(aCategory)}"  value="#{strivingBean.displayLink(aCategory)}"  ajax="false"></p:commandLink>
+                                 </p:dataList>                          
+                             </h:form>
+                         </p:panel>
+                       </div>
+                   </div>
+                </ui:repeat>                
+           </div> 
+              
+            <div class="Container30 Responsive100">                
+                    <div class="Container50 Responsive100">
+                        <div class="ContainerIndent">
+                            <p:panel style="min-height: 300px;">
+                                <h:form id="locationsForm"> 
+                                    <p:dataTable id="locationsList" value="#{strivingBean.allLocations}" var="aLocation">
+                                        <f:facet name="header">
+                                            Colleges
+                                        </f:facet>
+                                        <p:column style="width:32px;">
+                                            <h:graphicImage name="images/#{aLocation.logo}" styleClass="Fleft" library="sentinel-layout" height="20px" width="20px"></h:graphicImage>
+                                        </p:column>    
+                                        <p:column>#{aLocation.name}</p:column>                 
+                                    </p:dataTable>                     
+                                </h:form> 
+                            </p:panel>
+                        </div>
+                    </div>
+                    <div class="EmptyBox10"></div> 
+                    <div class="Container40 Responsive100">
+                        <div class="ContainerIndent">
+                            <p:panel style="min-height: 300px;">
+                                <h:form id="mainCategoryForm"> 
+                                    <p:dataList id="categoryList" value="#{strivingBean.mainCategories}" var="aCategory">
+                                        <f:facet name="header">
+                                            Categories
+                                        </f:facet>    
+                                        #{aCategory.name}                    
+                                    </p:dataList>                     
+                                </h:form> 
+                            </p:panel>
+                        </div>
+                    </div>
+                </div>   
+              
+         </div>
+    
+    </ui:define>
+
+</ui:composition>
